@@ -75,6 +75,28 @@ router.route('/items/:item_id')
 				res.send(err);
 			res.json(bear);
 		});
+     })
+
+    // update the item with this id (accessed at PUT http://localhost:8080/api/items/:item_id)
+    .put(function(req, res) {
+
+        // user our item model to find the bear we want
+        Item.findById(req.params.item_id, function(err, item) {
+
+            if (err)
+                res.send(err);
+
+            item.name = req.body.name; // update the item info
+
+            // save the item
+            item.save(function(err) {
+
+                if (err)
+                    res.send(err);
+                res.json({ message: 'Bear update!'});
+            });
+
+        });
 	});
 
 
