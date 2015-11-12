@@ -15,7 +15,7 @@ var ffxivhousing = React.createClass({
         style={styles.container}
         tintColor='#FF6600'
         initialRoute={{
-          title: 'FFxiv Housing',
+          title: '最终幻想14 住宅',
           component: ItemList,
         }}/>
     );

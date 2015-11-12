@@ -5,7 +5,8 @@ var {
 	Text,
 	ListView,
   	StyleSheet,
-  	View
+  	View,
+  	Image
 } = React
 
 var getItemListData = function() {
@@ -47,12 +48,16 @@ var ItemList = React.createClass({
 	},
 
 	_renderRow: function(item) {
-  	return (  		
-			<View   style = {styles.rowContainer}>
-				<View style = {styles.textContainer}>
+  	return (
+  		<View>  		
+			<View style = {styles.rowContainer}>
+				<Image style = {styles.thumb} source = {{uri: item.image}}/>
+				<View  style = {styles.textContainer}>
 					<Text style = {styles.title}>{item.name}</Text>
 				</View>
-			</View> 				  			
+			</View>
+			<View style = {styles.separator}/>				  			
+		</View>
 		);
   },
 })
@@ -64,24 +69,27 @@ var styles = StyleSheet.create({
 		marginRight: 10,
 	},
 	textContainer: {
-		flex: 		 1,
+		flex: 		 	 1,
+		justifyContent: 'center'
 	},
 	separator: {
 		height: 		  1,
-		backgroundColor: '#dddddd',
+		backgroundColor: '#3c8dbc',
 	},
 	price: {
 		fontSize:    20,
 		fontWeight: 'bold',
-		color: 			'black'
+		color: 		'black'
 	},
 	title: {
-		fontSize: 16,
-		color:    '#656565'
+		fontSize:  28,
+		justifyContent: 'center',
+		color:    '#e6f1f7'
 	},
 	rowContainer: {
-		padding: 		6,
-		flexDirection: 'row'
+		padding: 		  6,
+		flexDirection:   'row',
+		backgroundColor: '#337ab7'
 	}
 })
 

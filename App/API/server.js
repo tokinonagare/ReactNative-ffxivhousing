@@ -43,6 +43,7 @@ router.route('/items')
         
         var item = new Item();      // create a new instance of the item model
         item.name = req.body.name;  // set the items name (comes from the request)
+        item.image = req.body.image;
 
         // save the item and check for errors
         item.save(function(err) {
@@ -87,6 +88,7 @@ router.route('/items/:item_id')
                 res.send(err);
 
             item.name = req.body.name; // update the item info
+            item.image = req.body.image;
 
             // save the item
             item.save(function(err) {
