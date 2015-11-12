@@ -97,9 +97,18 @@ router.route('/items/:item_id')
             });
 
         });
-	});
+	})
 
-
+    // delete the bear with this id (accessed at DELETE http://localhost:8080/api/items/:item_id)
+    .delete(function(req, res) {
+        Item.remove({
+            _id: req.params.item_id
+        }, function(err, item) {
+            if (err)
+                res.send(err);
+            res.json({ message: 'Successfully deleted'});
+        });
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
