@@ -18,6 +18,7 @@ To enable API access using `forever` on server:
 
 ```bash
 npm install forever -g
+cd App/API/
 forever start server.js
 ```
 * https://github.com/foreverjs/forever
