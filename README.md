@@ -14,12 +14,17 @@ To run this project you need to fetch the node dependencies using the following 
 npm install
 ```
 
-To enable API access using the following command:
+To enable API access using `forever` on server:
 
 ```bash
-cd ./App/Data/
-node server.js
+npm install forever -g
+forever start server.js
 ```
+* https://github.com/foreverjs/forever
 
-MongoDB is runing on an ubuntu server.
+To enable DB access using `MangdDB` on server:
+
+```bash
+mongod --fork --logpath /var/log/mongod.log
+```
 

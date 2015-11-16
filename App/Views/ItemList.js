@@ -10,7 +10,7 @@ var {
 } = React
 
 var getItemListData = function() {
-	return 'http://localhost:8080/api/items/';
+	return 'http://133.130.58.155:27777/api/items/';
 }
 
 var ItemList = React.createClass({
@@ -74,7 +74,7 @@ var styles = StyleSheet.create({
 	},
 	separator: {
 		height: 		  1,
-		backgroundColor: '#3c8dbc',
+		backgroundColor: '#506274',
 	},
 	price: {
 		fontSize:    20,
@@ -82,14 +82,15 @@ var styles = StyleSheet.create({
 		color: 		'black'
 	},
 	title: {
-		fontSize:  28,
+		fontSize:  24,
+		fontFamily:     'Symbol',
 		justifyContent: 'center',
-		color:    '#e6f1f7'
+		color:    		'#e6f1f7'
 	},
 	rowContainer: {
 		padding: 		  6,
 		flexDirection:   'row',
-		backgroundColor: '#337ab7'
+		backgroundColor: '#415160'
 	}
 })
 
