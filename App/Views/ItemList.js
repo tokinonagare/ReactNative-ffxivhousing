@@ -1,11 +1,13 @@
 'use strict';
 
-var React = require('react-native') 
+var React 	   = require('react-native')
+var ListDetail = require('./ListDetail')
 var {
 	Text,
 	ListView,
   	StyleSheet,
   	View,
+  	TouchableHighlight,
   	Image
 } = React
 
@@ -30,7 +32,7 @@ var ItemList = React.createClass({
 	_fetchResults: function() {
     fetch(getItemListData())
       .then(response => response.json())
-      .then(jsonData     => {
+      .then(jsonData => {
       	this.setState({
 	    		dataSource: this.state.dataSource.cloneWithRows(jsonData.items)
 	    	});
@@ -47,19 +49,31 @@ var ItemList = React.createClass({
 		);
 	},
 
-	_renderRow: function(item) {
-  	return (
-  		<View>  		
-			<View style = {styles.rowContainer}>
-				<Image style = {styles.thumb} source = {{uri: item.image}}/>
-				<View  style = {styles.textContainer}>
-					<Text style = {styles.title}>{item.name}</Text>
+	_rowPressed: function(items) {
+		this.props.navigator.push({
+			title: 	   items.name,
+			component: ListDetail,
+			passProps: {items}
+		});
+	},
+
+	_renderRow: function(items) {
+	  	return (
+		  	<TouchableHighlight 
+		  		onPress 	  = {() => this._rowPressed(items)}
+		  		underlayColor = 'gray'>
+		  		<View>  		
+					<View style = {styles.rowContainer}>
+						<Image style = {styles.thumb} source = {{uri: items.image}}/>
+						<View  style = {styles.textContainer}>
+							<Text style = {styles.title}>{items.name}</Text>
+						</View>
+					</View>
+					<View style = {styles.separator}/>				  			
 				</View>
-			</View>
-			<View style = {styles.separator}/>				  			
-		</View>
+			</TouchableHighlight>
 		);
-  },
+	},
 })
 
 var styles = StyleSheet.create({
