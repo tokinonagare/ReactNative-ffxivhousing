@@ -55,7 +55,7 @@ router.route('/items')
         
     })
 
-    // get all the bears (accessed at GET http://localhost:8080/api/items)
+    // get all the items (accessed at GET http://localhost:8080/api/items)
     .get(function(req, res) {
     	Item.find(function(err, items) {
     		if (err)
@@ -65,23 +65,23 @@ router.route('/items')
     	});
     });
 
-// on routes that end in /bears/:item_id
+// on routes that end in /items/:item_id
 // ----------------------------------------------------
 router.route('/items/:item_id')
 	
-	// get the bear with that id (accessed at GET http://localhost:8080/api/items/:item_id)
+	// get the item with that id (accessed at GET http://localhost:8080/api/items/:item_id)
 	.get(function(req, res) {
-		Item.findById(req.params.item_id, function(err, bear) {
+		Item.findById(req.params.item_id, function(err, item) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			res.json(item);
 		});
      })
 
     // update the item with this id (accessed at PUT http://localhost:8080/api/items/:item_id)
     .put(function(req, res) {
 
-        // user our item model to find the bear we want
+        // user our item model to find the item we want
         Item.findById(req.params.item_id, function(err, item) {
 
             if (err)
@@ -95,13 +95,13 @@ router.route('/items/:item_id')
 
                 if (err)
                     res.send(err);
-                res.json({ message: 'Bear update!'});
+                res.json({ message: 'Item update!'});
             });
 
         });
 	})
 
-    // delete the bear with this id (accessed at DELETE http://localhost:8080/api/items/:item_id)
+    // delete the item with this id (accessed at DELETE http://localhost:8080/api/items/:item_id)
     .delete(function(req, res) {
         Item.remove({
             _id: req.params.item_id
